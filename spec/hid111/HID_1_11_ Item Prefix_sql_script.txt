@@ -1,0 +1,62 @@
+--------------------------------------------------------------
+PRAGMA foreign_keys = off;
+DROP TABLE IF EXISTS prefix_types;
+CREATE TABLE prefix_types (
+    id INTEGER PRIMARY KEY,
+    type_name VARCHAR,
+    bType VARCHAR,
+    bTag VARCHAR);
+PRAGMA foreign_keys = on;
+INSERT INTO prefix_types (
+    type_name,
+    bType,
+    bTag)
+Values
+
+('Main', '00','00'),
+('Global', '01','00'),
+('Local', '02','00');
+
+--------------------------------------------------------------
+PRAGMA foreign_keys = off;
+DROP TABLE IF EXISTS item_prefix;
+CREATE TABLE item_prefix (
+    id INTEGER PRIMARY KEY,
+    item_name VARCHAR,
+    bType VARCHAR,
+    bTag VARCHAR);
+PRAGMA foreign_keys = on;
+INSERT INTO item_prefix (
+    item_name,
+    bType,
+    bTag)
+Values
+
+('Input', '00','08'),
+('Output', '00','09'),
+('Feature', '00','0B'),
+('Collection', '00','0A'),
+('End Collection', '00','0C'),
+('Usage Page', '01','00'),
+('Logical Minimum', '01','01'),
+('Logical Maximum', '01','02'),
+('Physical Minimum', '01','03'),
+('Physical Maximum', '01','04'),
+('Unit Exponent', '01','05'),
+('Unit', '01','06'),
+('Report Size', '01','07'),
+('Report ID', '01','08'),
+('Report Count', '01','09'),
+('Push', '01','0A'),
+('Pop', '01','0B'),
+('Usage', '02','00'),
+('Usage Minimum', '02','01'),
+('Usage Maximum', '02','02'),
+('Designator Index', '02','03'),
+('Designator Minimum', '02','04'),
+('Designator Maximum', '02','05'),
+('String Index', '02','07'),
+('String Minimum', '02','08'),
+('String Maximum', '02','09'),
+('Delimiter', '02','0A');
+

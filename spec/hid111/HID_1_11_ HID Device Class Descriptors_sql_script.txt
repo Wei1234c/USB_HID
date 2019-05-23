@@ -1,0 +1,15 @@
+----------------------------------------------------------
+PRAGMA foreign_keys = off;
+DROP TABLE IF EXISTS hid_descriptor;
+CREATE TABLE hid_descriptor (
+    id INTEGER PRIMARY KEY,
+    parent_id INTEGER,
+    bLength VARCHAR(2),
+    bDescriptorType VARCHAR(2),
+    bcdHID VARCHAR(4),
+    bCountryCode VARCHAR(2),
+    bNumDescriptors VARCHAR(2),
+    bReportDescriptorType VARCHAR(2),
+    wReportDescriptorLength VARCHAR(4));
+PRAGMA foreign_keys = on;
+ 
