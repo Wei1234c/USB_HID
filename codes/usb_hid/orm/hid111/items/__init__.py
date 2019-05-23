@@ -104,7 +104,7 @@ PREFIXS = AttrDict({'Input'             : {'id': 1, 'item_name': 'Input', 'bType
                                            'bType'    : '02',
                                            'bTag'     : '0A'}})
 
-TAG_TYPE_PREFIXS = {(v['bTag'], v['bType']): v['item_name'] for v in PREFIXS.values()}
+TAG_TYPE_PREFIXS = {(v['bTag'], v['bType']): k for k, v in PREFIXS.items()}
 
 
 

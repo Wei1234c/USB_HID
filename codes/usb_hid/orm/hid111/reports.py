@@ -96,38 +96,48 @@ class Parser:
 
     def parse(self, byte_array, print_byte_array = True):
         self._init()
+        items = []
+        lines = []
         remained_byte_array = byte_array
         indent_spaces = 0
 
         if print_byte_array:
-            print('\n###################################################')
-            print(byte_array)
-            print('###################################################')
+            lines.append('')
+            lines.append('###################################################')
+            lines.append(str(byte_array))
+            lines.append('###################################################')
 
         while len(remained_byte_array) > 0:
             prefix_name, data_size, data, page_name, usage_name, remained_byte_array = \
                 self.first_item_of_byte_array(remained_byte_array)
 
             comment = None
-            if prefix_name == 'Usage Page':
+            if prefix_name == 'Usage_Page':
                 comment = page_name
-                print()
+                lines.append('')
             if prefix_name == 'Usage':
                 comment = usage_name
             if prefix_name in ['Input', 'Output', 'Feature']:
                 comment = self._get_bit_map_string(data)
             if prefix_name == 'Collection':
                 comment = self._get_collection_type(data)
-            if prefix_name == 'End Collection':
-                indent_spaces -= 2
-                data = ''
+            if prefix_name == 'End_Collection':
+                indent_spaces = indent_spaces - 2
+                # data = ''
 
-            print(''.join([' '] * indent_spaces), prefix_name, data, '({})'.format(comment) if comment else '')
+            lines.append('{} {} {} {}'.format(''.join([' '] * indent_spaces), prefix_name, '' if data is None else data,
+                                              '({})'.format(comment) if comment else ''))
 
             if prefix_name == 'Collection':
                 indent_spaces += 2
 
-        print()
+            prefix = AttrDict(PREFIXS.get(prefix_name))
+            items.append(Item(prefix, data))
+
+        lines.append('')
+        lines = '\n'.join(lines)
+
+        return lines, ReportDescriptor(items)
 
 
 
@@ -151,3 +161,8 @@ class ReportDescriptor:
         for item in self.items:
             b_array += item.byte_array
         return b_array
+
+
+    def parse(self, usages_dictionary):
+        parser = Parser(usages_dictionary)
+        return parser.parse(self.byte_array)
