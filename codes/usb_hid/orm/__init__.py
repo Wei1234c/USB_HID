@@ -82,7 +82,8 @@ class HIDdevice(universal_serial_bus.USBdevice):
 
 
     def set_report(self, data, report_type = REPORT_TYPES['Output'], report_id = 0, interface_idx = 0, timeout = None):
-        return self.set_class_request(data, request_type = self.CLASS_REQUEST_TYPES['SET_REPORT'],
+        return self.set_class_request(data,
+                                      request_type = self.CLASS_REQUEST_TYPES['SET_REPORT'],
                                       wValue = (report_type << 8) | report_id,
                                       interface_idx = interface_idx,
                                       timeout = timeout)
@@ -96,7 +97,8 @@ class HIDdevice(universal_serial_bus.USBdevice):
 
 
     def set_protocol(self, protocol_type = PROTOCOL_TYPES['Report'], interface_idx = 0, timeout = None):
-        return self.set_class_request(data = protocol_type, request_type = self.CLASS_REQUEST_TYPES['SET_PROTOCOL'],
+        return self.set_class_request(data = protocol_type,
+                                      request_type = self.CLASS_REQUEST_TYPES['SET_PROTOCOL'],
                                       wValue = protocol_type,
                                       interface_idx = interface_idx,
                                       timeout = timeout)

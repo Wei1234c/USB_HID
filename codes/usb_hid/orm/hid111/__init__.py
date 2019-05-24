@@ -44,6 +44,6 @@ class HIDdevice(HIDdevice):
 
 
     @property
-    def report_descriptor_dbos(self, usages_dictionary = None):
-        parser = Parser(usages_dictionary)
+    def report_descriptor_dbos(self):
+        parser = Parser()
         return [parser.parse(report_descriptor)[1] for report_descriptor in self.report_descriptors]

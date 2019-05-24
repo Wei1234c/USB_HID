@@ -1,3 +1,5 @@
+import json
+
 from universal_serial_bus.orm import OrmClassBase
 from .items import *
 
@@ -43,13 +45,10 @@ DATA_TYPE_BIT_MAP = {0: {0: 'Data', 1: 'Constant'},
 
 class Parser:
 
-    def __init__(self, usages_dictionary = None):
-        if usages_dictionary is None:
-            from .usages.dictionary import USAGES
+    def __init__(self):
+        from .usages.dictionary import USAGES
 
-            usages_dictionary = USAGES
-
-        self.idx_usages = get_idx_usage_names(usages_dictionary)
+        self.idx_usages = get_idx_usage_names(USAGES)
         self._init()
 
 
@@ -99,7 +98,7 @@ class Parser:
             return USAGES_PAGES.get(self.usage_page_id, 'Unknown')
 
 
-    def parse(self, byte_array, print_byte_array = True):
+    def parse(self, byte_array, print_lines = False):
         self._init()
         items = []
         lines = []
@@ -107,11 +106,10 @@ class Parser:
         indent_spaces = 0
         indent_spaces_step = 2
 
-        if print_byte_array:
-            lines.append('')
-            lines.append('###################################################')
-            lines.append(str(byte_array))
-            lines.append('###################################################')
+        lines.append('')
+        lines.append('###################################################')
+        lines.append(str(byte_array))
+        lines.append('###################################################')
 
         while len(remained_byte_array) > 0:
             prefix_name, data_size, data, page_name, usage_name, remained_byte_array = \
@@ -143,6 +141,9 @@ class Parser:
         lines.append('')
         lines = '\n'.join(lines)
 
+        if print_lines:
+            print(lines)
+
         return lines, ReportDescriptor(items)
 
 
@@ -154,8 +155,8 @@ class ReportDescriptor:
 
 
     @classmethod
-    def from_descriptor(cls, descriptor, usages_dictionary = None):
-        parser = Parser(usages_dictionary)
+    def from_descriptor(cls, descriptor):
+        parser = Parser()
         _, obj = parser.parse(descriptor)
         return obj
 
@@ -168,7 +169,23 @@ class ReportDescriptor:
         return b_array
 
 
-    def parse(self, usages_dictionary = None):
-        parser = Parser(usages_dictionary)
-        lines, _ = parser.parse(self.byte_array)
+    def parse(self, print_lines = False, save_as_file = False, fn = 'HID_report_descriptor.txt'):
+        parser = Parser()
+        lines, _ = parser.parse(self.byte_array, print_lines = print_lines)
+
+        if save_as_file:
+            with open(fn, 'wt') as f:
+                f.writelines(lines)
+
         return lines
+
+
+    def dump(self, fn = 'HID_report_descriptor.json'):
+        with open(fn, 'wt') as f:
+            json.dump(self.byte_array.tolist(), f)
+
+
+    @classmethod
+    def load(cls, fn = 'report_descriptor.json'):
+        with open(fn, 'rt') as f:
+            return cls.from_descriptor(json.load(f))

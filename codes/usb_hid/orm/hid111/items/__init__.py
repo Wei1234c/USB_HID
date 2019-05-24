@@ -148,9 +148,13 @@ class Item:
 
 
     @property
+    def size(self):
+        return 0 if self.value is None else max(math.ceil(math.log2(self.value + 1) / 8), 1)
+
+
+    @property
     def bSize(self):
-        length = 0 if self.value is None else max(math.ceil(math.log2(self.value + 1) / 8), 1)
-        return SIZE_bSIZE[length]
+        return SIZE_bSIZE[self.size]
 
 
     @property
@@ -167,6 +171,8 @@ class Item:
 
     @property
     def byte_array(self):
-        b_array = array('B', [self.tag_type_size] if self.value is None else [self.value, self.tag_type_size])
+        b_array = array('B',
+                        [self.tag_type_size] if self.value is None else
+                        b''.join([self.value.to_bytes(self.size, 'big'), self.tag_type_size.to_bytes(1, 'big')]))
         b_array.reverse()
         return b_array

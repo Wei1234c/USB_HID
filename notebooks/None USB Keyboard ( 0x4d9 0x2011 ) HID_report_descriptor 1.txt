@@ -1,0 +1,73 @@
+
+###################################################
+array('B', [5, 12, 9, 1, 161, 1, 133, 1, 21, 0, 37, 1, 117, 1, 149, 42, 9, 149, 9, 226, 9, 234, 9, 233, 10, 1, 132, 10, 1, 134, 10, 1, 138, 10, 1, 142, 10, 1, 146, 10, 1, 156, 10, 1, 163, 10, 1, 164, 10, 2, 158, 10, 1, 171, 10, 1, 180, 10, 2, 1, 10, 2, 2, 10, 2, 3, 10, 2, 7, 10, 2, 8, 10, 2, 26, 10, 2, 27, 10, 2, 28, 10, 2, 29, 10, 2, 157, 10, 2, 35, 10, 2, 36, 10, 2, 37, 10, 2, 121, 10, 2, 137, 10, 2, 139, 10, 2, 140, 9, 181, 9, 182, 9, 183, 9, 205, 10, 1, 131, 10, 1, 148, 10, 2, 33, 10, 2, 38, 10, 2, 39, 10, 2, 42, 129, 6, 149, 6, 129, 1, 192, 5, 1, 9, 128, 161, 1, 133, 2, 25, 129, 41, 131, 37, 1, 117, 1, 149, 3, 129, 6, 149, 5, 129, 1, 192])
+###################################################
+
+ Usage_Page 12 (Consumer)
+ Usage 1 (Consumer_Control)
+ Collection 1 (Application)
+   Report_ID 1 
+   Logical_Minimum 0 
+   Logical_Maximum 1 
+   Report_Size 1 
+   Report_Count 42 
+   Usage 149 (Help)
+   Usage 226 (Mute)
+   Usage 234 (Volume_Decrement)
+   Usage 233 (Volume_Increment)
+   Usage 388 (AL_Word_Processor)
+   Usage 390 (AL_Spreadsheet)
+   Usage 394 (AL_Email_Reader)
+   Usage 398 (AL_Calendar_Schedule)
+   Usage 402 (AL_Calculator)
+   Usage 412 (AL_Logoff)
+   Usage 419 (AL_Next_Task_Application)
+   Usage 420 (AL_Previous_Task_Application)
+   Usage 670 
+   Usage 427 (AL_Spell_Check)
+   Usage 436 (AL_File_Browser)
+   Usage 513 (AC_New)
+   Usage 514 (AC_Open)
+   Usage 515 (AC_Close)
+   Usage 519 (AC_Save)
+   Usage 520 (AC_Print)
+   Usage 538 (AC_Undo)
+   Usage 539 (AC_Copy)
+   Usage 540 (AC_Cut)
+   Usage 541 (AC_Paste)
+   Usage 669 
+   Usage 547 (AC_Home)
+   Usage 548 (AC_Back)
+   Usage 549 (AC_Forward)
+   Usage 633 (AC_Redo_Repeat)
+   Usage 649 (AC_Reply)
+   Usage 651 (AC_Forward_Msg)
+   Usage 652 (AC_Send)
+   Usage 181 (Scan_Next_Track)
+   Usage 182 (Scan_Previous_Track)
+   Usage 183 (Stop)
+   Usage 205 (Play_Pause)
+   Usage 387 (AL_Consumer_Control_Configuration)
+   Usage 404 (AL_Local_Machine_Browser)
+   Usage 545 (AC_Search)
+   Usage 550 (AC_Stop)
+   Usage 551 (AC_Refresh)
+   Usage 554 (AC_Bookmarks)
+   Input 6 (Data | Variable | Relative | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_Count 6 
+   Input 1 (Constant | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+ End_Collection  
+
+ Usage_Page 1 (Generic Desktop)
+ Usage 128 (System_Control)
+ Collection 1 (Application)
+   Report_ID 2 
+   Usage_Minimum 129 
+   Usage_Maximum 131 
+   Logical_Maximum 1 
+   Report_Size 1 
+   Report_Count 3 
+   Input 6 (Data | Variable | Relative | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_Count 5 
+   Input 1 (Constant | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+ End_Collection  

@@ -1,0 +1,26 @@
+
+###################################################
+array('B', [5, 12, 9, 1, 161, 1, 21, 0, 37, 1, 9, 233, 9, 234, 117, 1, 149, 2, 129, 2, 9, 226, 9, 205, 9, 181, 9, 182, 9, 140, 149, 5, 129, 6, 9, 0, 149, 1, 129, 2, 192])
+###################################################
+
+ Usage_Page 12 (Consumer)
+ Usage 1 (Consumer_Control)
+ Collection 1 (Application)
+   Logical_Minimum 0 
+   Logical_Maximum 1 
+   Usage 233 (Volume_Increment)
+   Usage 234 (Volume_Decrement)
+   Report_Size 1 
+   Report_Count 2 
+   Input 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Usage 226 (Mute)
+   Usage 205 (Play_Pause)
+   Usage 181 (Scan_Next_Track)
+   Usage 182 (Scan_Previous_Track)
+   Usage 140 (Media_Select_Telephone)
+   Report_Count 5 
+   Input 6 (Data | Variable | Relative | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Usage 0 (Unassigned)
+   Report_Count 1 
+   Input 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+ End_Collection  
