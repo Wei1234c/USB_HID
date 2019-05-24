@@ -43,7 +43,12 @@ DATA_TYPE_BIT_MAP = {0: {0: 'Data', 1: 'Constant'},
 
 class Parser:
 
-    def __init__(self, usages_dictionary):
+    def __init__(self, usages_dictionary = None):
+        if usages_dictionary is None:
+            from .usages.dictionary import USAGES
+
+            usages_dictionary = USAGES
+
         self.idx_usages = get_idx_usage_names(usages_dictionary)
         self._init()
 
@@ -89,7 +94,7 @@ class Parser:
 
 
     def _get_usage_page_name(self, prefix_name, data):
-        if prefix_name == 'Usage Page':
+        if prefix_name == 'Usage_Page':
             self.usage_page_id = OrmClassBase.int_to_hex(data).upper()
             return USAGES_PAGES.get(self.usage_page_id, 'Unknown')
 
@@ -100,6 +105,7 @@ class Parser:
         lines = []
         remained_byte_array = byte_array
         indent_spaces = 0
+        indent_spaces_step = 2
 
         if print_byte_array:
             lines.append('')
@@ -122,14 +128,14 @@ class Parser:
             if prefix_name == 'Collection':
                 comment = self._get_collection_type(data)
             if prefix_name == 'End_Collection':
-                indent_spaces = indent_spaces - 2
+                indent_spaces -= indent_spaces_step
                 # data = ''
 
             lines.append('{} {} {} {}'.format(''.join([' '] * indent_spaces), prefix_name, '' if data is None else data,
                                               '({})'.format(comment) if comment else ''))
 
             if prefix_name == 'Collection':
-                indent_spaces += 2
+                indent_spaces += indent_spaces_step
 
             prefix = AttrDict(PREFIXS.get(prefix_name))
             items.append(Item(prefix, data))
@@ -144,15 +150,14 @@ class Parser:
 class ReportDescriptor:
 
     def __init__(self, items):
-        self.from_items(items)
-
-
-    def from_items(self, items):
         self.items = items
 
 
-    def from_descriptor(self, descriptor):
-        pass
+    @classmethod
+    def from_descriptor(cls, descriptor, usages_dictionary = None):
+        parser = Parser(usages_dictionary)
+        _, obj = parser.parse(descriptor)
+        return obj
 
 
     @property
@@ -163,6 +168,7 @@ class ReportDescriptor:
         return b_array
 
 
-    def parse(self, usages_dictionary):
+    def parse(self, usages_dictionary = None):
         parser = Parser(usages_dictionary)
-        return parser.parse(self.byte_array)
+        lines, _ = parser.parse(self.byte_array)
+        return lines

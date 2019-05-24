@@ -1,6 +1,7 @@
 from universal_serial_bus.orm.usb20.descriptors import *
 from .descriptors import *
 from .descriptors import HidDescriptor
+from .reports import Parser, ReportDescriptor
 from .. import HIDdevice
 
 
@@ -40,3 +41,9 @@ class HIDdevice(HIDdevice):
     @property
     def hid_descriptor_dbos(self):
         return [HidDescriptor.from_byte_array(descriptor) for descriptor in self.hid_descriptors]
+
+
+    @property
+    def report_descriptor_dbos(self, usages_dictionary = None):
+        parser = Parser(usages_dictionary)
+        return [parser.parse(report_descriptor)[1] for report_descriptor in self.report_descriptors]
