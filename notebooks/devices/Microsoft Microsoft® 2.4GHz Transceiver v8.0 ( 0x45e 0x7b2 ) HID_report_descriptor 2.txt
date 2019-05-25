@@ -1,0 +1,163 @@
+
+###################################################
+array('B', [5, 12, 9, 1, 161, 1, 133, 32, 6, 0, 255, 21, 0, 38, 255, 0, 117, 8, 149, 18, 10, 10, 250, 177, 2, 133, 33, 6, 0, 255, 21, 0, 37, 1, 117, 1, 149, 16, 26, 16, 250, 42, 31, 250, 129, 2, 133, 40, 6, 0, 255, 26, 16, 250, 42, 31, 250, 177, 2, 133, 34, 6, 0, 255, 21, 0, 38, 255, 0, 117, 8, 149, 26, 10, 10, 250, 177, 2, 133, 35, 6, 0, 255, 10, 10, 250, 177, 2, 133, 36, 6, 0, 255, 149, 31, 10, 10, 250, 177, 2, 133, 37, 6, 0, 255, 10, 10, 250, 177, 2, 133, 38, 6, 0, 255, 10, 10, 250, 177, 2, 133, 39, 6, 0, 255, 10, 10, 250, 129, 2, 133, 20, 6, 0, 255, 21, 0, 37, 3, 117, 2, 149, 1, 10, 1, 254, 129, 2, 117, 6, 129, 1, 133, 4, 6, 0, 255, 21, 0, 37, 3, 117, 2, 149, 1, 10, 1, 254, 129, 2, 117, 6, 129, 1, 192, 5, 12, 9, 1, 161, 1, 133, 7, 5, 12, 25, 0, 42, 255, 3, 149, 1, 117, 16, 21, 0, 38, 255, 3, 129, 0, 5, 7, 25, 0, 41, 255, 117, 8, 38, 255, 0, 129, 0, 129, 1, 6, 0, 255, 10, 3, 254, 10, 4, 254, 117, 1, 149, 2, 37, 1, 129, 2, 10, 5, 255, 149, 1, 117, 5, 37, 31, 129, 2, 117, 1, 129, 1, 26, 1, 253, 42, 255, 253, 21, 1, 38, 255, 0, 117, 8, 129, 0, 10, 2, 255, 38, 255, 0, 21, 0, 129, 2, 192, 6, 188, 255, 9, 136, 161, 1, 133, 8, 25, 1, 41, 255, 21, 1, 38, 255, 0, 149, 1, 117, 8, 129, 0, 192, 5, 1, 9, 128, 161, 1, 133, 3, 25, 0, 41, 255, 21, 0, 38, 255, 0, 129, 0, 192])
+###################################################
+
+ Usage_Page 12 (Consumer)
+ Usage 1 (Consumer_Control)
+ Collection 1 (Application)
+   Report_ID 32 
+
+   Usage_Page 65280 (Unknown)
+   Logical_Minimum 0 
+   Logical_Maximum 255 
+   Report_Size 8 
+   Report_Count 18 
+   Usage 64010 
+   Feature 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_ID 33 
+
+   Usage_Page 65280 (Unknown)
+   Logical_Minimum 0 
+   Logical_Maximum 1 
+   Report_Size 1 
+   Report_Count 16 
+   Usage_Minimum 64016 
+   Usage_Maximum 64031 
+   Input 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_ID 40 
+
+   Usage_Page 65280 (Unknown)
+   Usage_Minimum 64016 
+   Usage_Maximum 64031 
+   Feature 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_ID 34 
+
+   Usage_Page 65280 (Unknown)
+   Logical_Minimum 0 
+   Logical_Maximum 255 
+   Report_Size 8 
+   Report_Count 26 
+   Usage 64010 
+   Feature 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_ID 35 
+
+   Usage_Page 65280 (Unknown)
+   Usage 64010 
+   Feature 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_ID 36 
+
+   Usage_Page 65280 (Unknown)
+   Report_Count 31 
+   Usage 64010 
+   Feature 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_ID 37 
+
+   Usage_Page 65280 (Unknown)
+   Usage 64010 
+   Feature 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_ID 38 
+
+   Usage_Page 65280 (Unknown)
+   Usage 64010 
+   Feature 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_ID 39 
+
+   Usage_Page 65280 (Unknown)
+   Usage 64010 
+   Input 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_ID 20 
+
+   Usage_Page 65280 (Unknown)
+   Logical_Minimum 0 
+   Logical_Maximum 3 
+   Report_Size 2 
+   Report_Count 1 
+   Usage 65025 
+   Input 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_Size 6 
+   Input 1 (Constant | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_ID 4 
+
+   Usage_Page 65280 (Unknown)
+   Logical_Minimum 0 
+   Logical_Maximum 3 
+   Report_Size 2 
+   Report_Count 1 
+   Usage 65025 
+   Input 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_Size 6 
+   Input 1 (Constant | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+ End_Collection  
+
+ Usage_Page 12 (Consumer)
+ Usage 1 (Consumer_Control)
+ Collection 1 (Application)
+   Report_ID 7 
+
+   Usage_Page 12 (Consumer)
+   Usage_Minimum 0 
+   Usage_Maximum 1023 
+   Report_Count 1 
+   Report_Size 16 
+   Logical_Minimum 0 
+   Logical_Maximum 1023 
+   Input 0 (Data | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+
+   Usage_Page 7 (Keyboard/Keypad)
+   Usage_Minimum 0 
+   Usage_Maximum 255 
+   Report_Size 8 
+   Logical_Maximum 255 
+   Input 0 (Data | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Input 1 (Constant | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+
+   Usage_Page 65280 (Unknown)
+   Usage 65027 
+   Usage 65028 
+   Report_Size 1 
+   Report_Count 2 
+   Logical_Maximum 1 
+   Input 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Usage 65285 
+   Report_Count 1 
+   Report_Size 5 
+   Logical_Maximum 31 
+   Input 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_Size 1 
+   Input 1 (Constant | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Usage_Minimum 64769 
+   Usage_Maximum 65023 
+   Logical_Minimum 1 
+   Logical_Maximum 255 
+   Report_Size 8 
+   Input 0 (Data | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Usage 65282 
+   Logical_Maximum 255 
+   Logical_Minimum 0 
+   Input 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+ End_Collection  
+
+ Usage_Page 65468 (Unknown)
+ Usage 136 
+ Collection 1 (Application)
+   Report_ID 8 
+   Usage_Minimum 1 
+   Usage_Maximum 255 
+   Logical_Minimum 1 
+   Logical_Maximum 255 
+   Report_Count 1 
+   Report_Size 8 
+   Input 0 (Data | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+ End_Collection  
+
+ Usage_Page 1 (Generic Desktop)
+ Usage 128 (System_Control)
+ Collection 1 (Application)
+   Report_ID 3 
+   Usage_Minimum 0 
+   Usage_Maximum 255 
+   Logical_Minimum 0 
+   Logical_Maximum 255 
+   Input 0 (Data | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+ End_Collection  

@@ -1,0 +1,84 @@
+
+###################################################
+array('B', [5, 1, 9, 2, 161, 1, 133, 2, 9, 1, 161, 0, 149, 16, 117, 1, 21, 0, 37, 1, 5, 9, 25, 1, 41, 16, 129, 2, 149, 2, 117, 12, 22, 1, 248, 38, 255, 7, 5, 1, 9, 48, 9, 49, 129, 6, 149, 1, 117, 8, 21, 129, 37, 127, 9, 56, 129, 6, 149, 1, 5, 12, 10, 56, 2, 129, 6, 192, 192, 5, 12, 9, 1, 161, 1, 133, 3, 149, 2, 117, 16, 21, 1, 38, 255, 2, 25, 1, 42, 255, 2, 129, 0, 192, 5, 1, 9, 128, 161, 1, 133, 4, 149, 1, 117, 2, 21, 1, 37, 3, 9, 130, 9, 129, 9, 131, 129, 0, 117, 6, 129, 3, 192, 6, 188, 255, 9, 136, 161, 1, 133, 8, 149, 1, 117, 8, 21, 1, 38, 255, 0, 25, 1, 41, 255, 129, 0, 192])
+###################################################
+
+ Usage_Page 1 (Generic Desktop)
+ Usage 2 (Mouse)
+ Collection 1 (Application)
+   Report_ID 2 
+   Usage 1 (Pointer)
+   Collection 0 (Physical)
+     Report_Count 16 
+     Report_Size 1 
+     Logical_Minimum 0 
+     Logical_Maximum 1 
+
+     Usage_Page 9 (Button)
+     Usage_Minimum 1 
+     Usage_Maximum 16 
+     Input 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+     Report_Count 2 
+     Report_Size 12 
+     Logical_Minimum 63489 
+     Logical_Maximum 2047 
+
+     Usage_Page 1 (Generic Desktop)
+     Usage 48 (X)
+     Usage 49 (Y)
+     Input 6 (Data | Variable | Relative | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+     Report_Count 1 
+     Report_Size 8 
+     Logical_Minimum 129 
+     Logical_Maximum 127 
+     Usage 56 (Wheel)
+     Input 6 (Data | Variable | Relative | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+     Report_Count 1 
+
+     Usage_Page 12 (Consumer)
+     Usage 568 (AC_Pan)
+     Input 6 (Data | Variable | Relative | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   End_Collection  
+ End_Collection  
+
+ Usage_Page 12 (Consumer)
+ Usage 1 (Consumer_Control)
+ Collection 1 (Application)
+   Report_ID 3 
+   Report_Count 2 
+   Report_Size 16 
+   Logical_Minimum 1 
+   Logical_Maximum 767 
+   Usage_Minimum 1 
+   Usage_Maximum 767 
+   Input 0 (Data | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+ End_Collection  
+
+ Usage_Page 1 (Generic Desktop)
+ Usage 128 (System_Control)
+ Collection 1 (Application)
+   Report_ID 4 
+   Report_Count 1 
+   Report_Size 2 
+   Logical_Minimum 1 
+   Logical_Maximum 3 
+   Usage 130 (System_Sleep)
+   Usage 129 (System_Power_Down)
+   Usage 131 (System_Wake_Up)
+   Input 0 (Data | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_Size 6 
+   Input 3 (Constant | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+ End_Collection  
+
+ Usage_Page 65468 (Unknown)
+ Usage 136 
+ Collection 1 (Application)
+   Report_ID 8 
+   Report_Count 1 
+   Report_Size 8 
+   Logical_Minimum 1 
+   Logical_Maximum 255 
+   Usage_Minimum 1 
+   Usage_Maximum 255 
+   Input 0 (Data | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+ End_Collection  

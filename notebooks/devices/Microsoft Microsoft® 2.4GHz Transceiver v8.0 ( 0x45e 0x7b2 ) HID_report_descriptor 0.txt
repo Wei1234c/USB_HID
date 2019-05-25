@@ -1,0 +1,43 @@
+
+###################################################
+array('B', [5, 1, 9, 6, 161, 1, 5, 8, 25, 1, 41, 3, 21, 0, 37, 1, 117, 1, 149, 3, 145, 2, 149, 5, 145, 1, 5, 7, 26, 224, 0, 42, 231, 0, 149, 8, 129, 2, 117, 8, 149, 1, 129, 1, 25, 0, 42, 145, 0, 38, 255, 0, 149, 6, 129, 0, 5, 12, 10, 192, 2, 161, 2, 26, 193, 2, 42, 198, 2, 149, 6, 177, 3, 192, 192])
+###################################################
+
+ Usage_Page 1 (Generic Desktop)
+ Usage 6 (Keyboard)
+ Collection 1 (Application)
+
+   Usage_Page 8 (LEDs)
+   Usage_Minimum 1 
+   Usage_Maximum 3 
+   Logical_Minimum 0 
+   Logical_Maximum 1 
+   Report_Size 1 
+   Report_Count 3 
+   Output 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_Count 5 
+   Output 1 (Constant | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+
+   Usage_Page 7 (Keyboard/Keypad)
+   Usage_Minimum 224 
+   Usage_Maximum 231 
+   Report_Count 8 
+   Input 2 (Data | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Report_Size 8 
+   Report_Count 1 
+   Input 1 (Constant | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   Usage_Minimum 0 
+   Usage_Maximum 145 
+   Logical_Maximum 255 
+   Report_Count 6 
+   Input 0 (Data | Array | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+
+   Usage_Page 12 (Consumer)
+   Usage 704 
+   Collection 2 (Logical)
+     Usage_Minimum 705 
+     Usage_Maximum 710 
+     Report_Count 6 
+     Feature 3 (Constant | Variable | Absolute | No Wrap | Linear | Preferred State | No Null position | Non Volatile | Bit Field)
+   End_Collection  
+ End_Collection  
