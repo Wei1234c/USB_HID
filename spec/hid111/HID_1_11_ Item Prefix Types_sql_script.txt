@@ -1,14 +1,14 @@
 --------------------------------------------------------------
 PRAGMA foreign_keys = off;
-DROP TABLE IF EXISTS prefix_types;
-CREATE TABLE prefix_types (
+DROP TABLE IF EXISTS prefix_category;
+CREATE TABLE prefix_category (
     id INTEGER PRIMARY KEY,
-    type_name VARCHAR,
+    name VARCHAR,
     bType VARCHAR,
     bTag VARCHAR);
 PRAGMA foreign_keys = on;
-INSERT INTO prefix_types (
-    type_name,
+INSERT INTO prefix_category (
+    name,
     bType,
     bTag)
 Values
@@ -19,15 +19,15 @@ Values
 
 --------------------------------------------------------------
 PRAGMA foreign_keys = off;
-DROP TABLE IF EXISTS item_prefix;
-CREATE TABLE item_prefix (
+DROP TABLE IF EXISTS prefix_types;
+CREATE TABLE prefix_types (
     id INTEGER PRIMARY KEY,
-    item_name VARCHAR,
+    name VARCHAR,
     bType VARCHAR,
     bTag VARCHAR);
 PRAGMA foreign_keys = on;
-INSERT INTO item_prefix (
-    item_name,
+INSERT INTO prefix_types (
+    name,
     bType,
     bTag)
 Values

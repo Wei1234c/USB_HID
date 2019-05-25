@@ -1,10 +1,7 @@
 import json
 
-from universal_serial_bus.orm import OrmClassBase
 from .items import *
 
-
-bSIZE_SIZE = {0: 0, 1: 1, 2: 2, 3: 4}
 
 USAGES_PAGES = {'00': 'Undefined',
                 '01': 'Generic Desktop',
@@ -57,48 +54,12 @@ class Parser:
 
 
     def first_item_of_byte_array(self, byte_array):
-        prefix = byte_array[0]
-        bTag = OrmClassBase.int_to_hex(prefix >> 4).upper()
-        bType = OrmClassBase.int_to_hex((prefix >> 2) & 0b00000011).upper()
-
-        prefix_name = TAG_TYPE_PREFIXS[(bTag, bType)]
-
-        data_size = bSIZE_SIZE[prefix & 0b00000011]
-        data = array('B', byte_array[1:data_size + 1])
-        data.reverse()
-        data = OrmClassBase.byte_array_to_int(data) if len(data) > 0 else None
-
-        page_name = self._get_usage_page_name(prefix_name, data)
-        usage_name = self._get_usage_name(prefix_name, data)
-        remained_byte_array = byte_array[1 + data_size:]
-        return prefix_name, data_size, data, page_name, usage_name, remained_byte_array
+        item = Item.from_byte_array(byte_array)
+        remained_byte_array = byte_array[1 + item.value_size:]
+        return item, remained_byte_array
 
 
-    def _get_usage_name(self, prefix_name, data):
-        if prefix_name == 'Usage':
-            usage_id = OrmClassBase.int_to_hex(data).upper()
-            usage_name = self.idx_usages.get((self.usage_page_id, usage_id), None)
-            return usage_name
-
-
-    def _get_bit_map_string(self, data):
-        string = []
-        for i in DATA_TYPE_BIT_MAP.keys():
-            string.append(DATA_TYPE_BIT_MAP[i][(data >> i) & 1])
-        return ' | '.join(string)
-
-
-    def _get_collection_type(self, collection_id):
-        return IDX_COLLECTIONS.get(OrmClassBase.int_to_hex(collection_id).upper())
-
-
-    def _get_usage_page_name(self, prefix_name, data):
-        if prefix_name == 'Usage_Page':
-            self.usage_page_id = OrmClassBase.int_to_hex(data).upper()
-            return USAGES_PAGES.get(self.usage_page_id, 'Unknown')
-
-
-    def parse(self, byte_array, print_lines = False):
+    def parse(self, byte_array, print_out = False):
         self._init()
         items = []
         lines = []
@@ -112,39 +73,59 @@ class Parser:
         lines.append('###################################################')
 
         while len(remained_byte_array) > 0:
-            prefix_name, data_size, data, page_name, usage_name, remained_byte_array = \
-                self.first_item_of_byte_array(remained_byte_array)
+            item, remained_byte_array = self.first_item_of_byte_array(remained_byte_array)
+            prefix_type = item.prefix_type_name
 
             comment = None
-            if prefix_name == 'Usage_Page':
-                comment = page_name
+            if prefix_type == 'Usage_Page':
+                comment = self._get_usage_page_name(prefix_type, item.value)
                 lines.append('')
-            if prefix_name == 'Usage':
-                comment = usage_name
-            if prefix_name in ['Input', 'Output', 'Feature']:
-                comment = self._get_bit_map_string(data)
-            if prefix_name == 'Collection':
-                comment = self._get_collection_type(data)
-            if prefix_name == 'End_Collection':
+            if prefix_type == 'Usage':
+                comment = self._get_usage_name(prefix_type, item.value)
+            if prefix_type in ['Input', 'Output', 'Feature']:
+                comment = self._get_bit_map_string(int.from_bytes(item.value.tobytes(), 'little'))
+            if prefix_type == 'Collection':
+                comment = IDX_COLLECTIONS.get(item.value.tobytes().hex().upper())
+            if prefix_type == 'End_Collection':
                 indent_spaces -= indent_spaces_step
                 # data = ''
 
-            lines.append('{} {} {} {}'.format(''.join([' '] * indent_spaces), prefix_name, '' if data is None else data,
+            lines.append('{} {} {} {}'.format(''.join([' '] * indent_spaces),
+                                              prefix_type,
+                                              '' if item.value_size == 0 else
+                                              int.from_bytes(item.value.tobytes(), 'little'),
                                               '({})'.format(comment) if comment else ''))
-
-            if prefix_name == 'Collection':
+            if prefix_type == 'Collection':
                 indent_spaces += indent_spaces_step
 
-            prefix = AttrDict(PREFIXS.get(prefix_name))
-            items.append(Item(prefix, data))
+            prefix = AttrDict(PREFIX_TYPES.get(prefix_type))
+            items.append(Item(prefix, item.value))
 
         lines.append('')
         lines = '\n'.join(lines)
 
-        if print_lines:
+        if print_out:
             print(lines)
 
         return lines, ReportDescriptor(items)
+
+
+    def _get_usage_page_name(self, prefix_type, data):
+        self.usage_page_id = data.tobytes().hex().upper()
+        return USAGES_PAGES.get(self.usage_page_id, 'Unknown')
+
+
+    def _get_usage_name(self, prefix_type, data):
+        usage_id = data.tobytes().hex().upper()
+        usage_name = self.idx_usages.get((self.usage_page_id, usage_id), None)
+        return usage_name
+
+
+    def _get_bit_map_string(self, data):
+        string = []
+        for i in DATA_TYPE_BIT_MAP.keys():
+            string.append(DATA_TYPE_BIT_MAP[i][(data >> i) & 1])
+        return ' | '.join(string)
 
 
 
@@ -169,9 +150,9 @@ class ReportDescriptor:
         return b_array
 
 
-    def parse(self, print_lines = False, save_as_file = False, fn = 'HID_report_descriptor.txt'):
+    def parse(self, print_out = False, save_as_file = False, fn = 'HID_report_descriptor.txt'):
         parser = Parser()
-        lines, _ = parser.parse(self.byte_array, print_lines = print_lines)
+        lines, _ = parser.parse(self.byte_array, print_out = print_out)
 
         if save_as_file:
             with open(fn, 'wt') as f:
@@ -188,4 +169,4 @@ class ReportDescriptor:
     @classmethod
     def load(cls, fn = 'report_descriptor.json'):
         with open(fn, 'rt') as f:
-            return cls.from_descriptor(json.load(f))
+            return cls.from_descriptor(array('B', json.load(f)))

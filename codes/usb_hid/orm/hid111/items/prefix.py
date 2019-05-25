@@ -1,5 +1,5 @@
-
 from universal_serial_bus.orm import ModelBuilder, OrmClassBase
+
 
 
 def map_db_objects(db_url):
@@ -10,12 +10,12 @@ def map_db_objects(db_url):
 
 
 
-class ItemPrefix(OrmClassBase):
+class PrefixCategory(OrmClassBase):
     fields_sizes = []
 
 
-    def __init__(self, item_name, bType, bTag):
-        self.item_name = item_name
+    def __init__(self, type_name, bType, bTag):
+        self.type_name = type_name
         self.bType = bType
         self.bTag = bTag
 
@@ -25,7 +25,7 @@ class PrefixType(OrmClassBase):
     fields_sizes = []
 
 
-    def __init__(self, type_name, bType, bTag):
-        self.type_name = type_name
+    def __init__(self, item_name, bType, bTag):
+        self.item_name = item_name
         self.bType = bType
         self.bTag = bTag
