@@ -1,5 +1,6 @@
 import universal_serial_bus
 from universal_serial_bus.legacy import CONTROL_REQUEST
+from universal_serial_bus.orm import OrmClassBase
 
 
 
@@ -19,6 +20,11 @@ class HIDdevice(universal_serial_bus.USBdevice):
 
     REPORT_TYPES = {'Input': 0x01, 'Output': 0x02, 'Feature': 0x03}
     PROTOCOL_TYPES = {'Boot': 0x00, 'Report': 0x01}
+
+
+    @property
+    def hid_version(self):
+        return OrmClassBase.byte_array_to_bcd(self.hid_descriptors[0][2:4])
 
 
     @property
