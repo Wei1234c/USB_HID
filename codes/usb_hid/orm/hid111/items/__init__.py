@@ -109,8 +109,8 @@ TAG_TYPE_PREFIX_TYPES = {(v['bTag'], v['bType']): k for k, v in PREFIX_TYPES.ite
 
 
 
-def get_usages_dictionary(fn = 'usb_hid_report_item_usages.json'):
-    return AttrDict.load(fn)
+def get_usages_dictionary(file_name = 'usb_hid_report_item_usages.json'):
+    return AttrDict.load(file_name)
 
 
 

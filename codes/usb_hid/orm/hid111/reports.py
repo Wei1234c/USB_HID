@@ -150,23 +150,23 @@ class ReportDescriptor:
         return b_array
 
 
-    def parse(self, print_out = False, save_as_file = False, fn = 'HID_report_descriptor.txt'):
+    def parse(self, print_out = False, save_as_file = False, file_name = 'HID_report_descriptor.txt'):
         parser = Parser()
         lines, _ = parser.parse(self.byte_array, print_out = print_out)
 
         if save_as_file:
-            with open(fn, 'wt') as f:
+            with open(file_name, 'wt') as f:
                 f.writelines(lines)
 
         return lines
 
 
-    def dump(self, fn = 'HID_report_descriptor.json'):
-        with open(fn, 'wt') as f:
+    def dump(self, file_name = 'HID_report_descriptor.json'):
+        with open(file_name, 'wt') as f:
             json.dump(self.byte_array.tolist(), f)
 
 
     @classmethod
-    def load(cls, fn = 'report_descriptor.json'):
-        with open(fn, 'rt') as f:
+    def load(cls, file_name = 'report_descriptor.json'):
+        with open(file_name, 'rt') as f:
             return cls.from_descriptor(array('B', json.load(f)))

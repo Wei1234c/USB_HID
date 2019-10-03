@@ -1,3 +1,5 @@
+import usb.core
+
 import universal_serial_bus
 from orm.tools import AttrDict
 from universal_serial_bus.legacy import CONTROL_REQUEST
@@ -36,8 +38,14 @@ class HIDdevice(universal_serial_bus.USBdevice):
 
     @property
     def report_descriptors(self):
-        return [self.get_class_descriptor(descriptor_type = self.REPORT_DESCRIPTOR_TYPE_CODE, interface_idx = i)
-                for i in range(len(self.hid_descriptors))]
+        dcpts = []
+        for i in range(len(self.interface_descriptor_dbos)):
+            try:
+                dcpts.append(self.get_class_descriptor(descriptor_type = self.REPORT_DESCRIPTOR_TYPE_CODE,
+                                                       interface_idx = i))
+            except usb.core.USBError as e:
+                pass
+        return dcpts
 
 
     def get_class_descriptor(self, descriptor_type = HID_DESCRIPTOR_TYPE_CODE, physical_descriptor_idx = 0,
