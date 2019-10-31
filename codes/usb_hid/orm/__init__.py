@@ -112,7 +112,7 @@ class HIDdevice(universal_serial_bus.USBdevice):
 
 
     def set_idle(self, duration = 0, report_id = 0, interface_idx = 0, timeout = None):
-        return self.set_class_request(data = duration,
+        return self.set_class_request(data = 0,
                                       request = self.CLASS_REQUEST_TYPES['SET_IDLE'],
                                       wValue = (duration << 8) | report_id,
                                       interface_idx = interface_idx,
