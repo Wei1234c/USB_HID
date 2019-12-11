@@ -89,11 +89,12 @@ class Parser:
             if prefix_type == 'End_Collection':
                 indent_spaces -= indent_spaces_step
                 # data = ''
+            signed = True if prefix_type in ('Logical_Minimum', 'Logical_Maximum') else False
 
             lines.append('{} {} {} {}'.format(''.join([' '] * indent_spaces),
                                               prefix_type,
                                               '' if item.value_size == 0 else
-                                              int.from_bytes(item.value.tobytes(), 'little'),
+                                              int.from_bytes(item.value.tobytes(), 'little', signed = signed),
                                               '({})'.format(comment) if comment else ''))
             if prefix_type == 'Collection':
                 indent_spaces += indent_spaces_step
